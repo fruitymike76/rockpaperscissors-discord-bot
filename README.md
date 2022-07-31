@@ -1,1 +1,1 @@
-Discord bot to announce rockpaperscissors contract related events
+Discord bot for announcing rock paper scissors contract events
