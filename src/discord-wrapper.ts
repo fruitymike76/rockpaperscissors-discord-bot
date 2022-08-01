@@ -8,6 +8,7 @@ export const getChannel = async (config: Config): Promise<TextChannel> => {
     const options: ClientOptions = { intents: [ Intents.FLAGS.GUILDS ]};
     const client = new Client(options);
     await client.login(config.TOKEN);
+    client.isReady();
 
     const channel = client.channels.cache.get(config.CHANNEL_ID);
     if (!channel || !(channel instanceof TextChannel)) {
