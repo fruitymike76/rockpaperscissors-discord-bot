@@ -29,7 +29,7 @@ const announceNewGames = (channel: TextChannel, contract: RockPaperScissors) => 
 }
 
 const main = async (signal: AbortSignal) => {
-    const channel = await retryPromise(getChannel(config), 100);
+    const channel = await retryPromise(getChannel(config, signal), 100);
     const provider = new providers.JsonRpcProvider(config.HTTP_PROVIDER);
     const contract = RockPaperScissors__factory.connect(config.ADDRESS, provider);
     signal.addEventListener('abort', () => {

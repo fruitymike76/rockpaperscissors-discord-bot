@@ -4,7 +4,7 @@ import { utils, constants, BigNumber } from 'ethers';
 import { Config } from './config';
 import { GameContext, RockPaperScissors } from './typechain-types';
 
-export const getChannel = async (config: Config): Promise<TextChannel> => {
+export const getChannel = async (config: Config, signal: AbortSignal): Promise<TextChannel> => {
     const options: ClientOptions = { intents: [ Intents.FLAGS.GUILDS ]};
     const client = new Client(options);
     await client.login(config.TOKEN);
@@ -15,6 +15,8 @@ export const getChannel = async (config: Config): Promise<TextChannel> => {
         console.error(channel);
         throw new Error(`Unable to find channel with id ${config.CHANNEL_ID}`);
     }
+
+    signal.addEventListener('abort', () => client.destroy());
 
     console.log('Channel retrieved...');
     return channel;
