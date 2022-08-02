@@ -63,8 +63,8 @@ export const getUpdatedContextMessage = (context: GameContext.ContextDataStructO
             { name: 'Claim timeout', value: numberToTimeString(context.claimTimeout) },
             { name: 'Score threshold', value: context.scoreThreshold.toString() },
             { name: 'Round threshold', value: context.roundThreshold.toString() },
-            { name: 'Owner tip', value: (context.ownerTipRate / 100).toFixed(2) },
-            { name: 'Referral tip', value: (context.referralTipRate / 100).toFixed(2) },
+            { name: 'Owner tip', value: (context.ownerTipRate / 100).toFixed(2) + '%' },
+            { name: 'Referral tip', value: (context.referralTipRate / 100).toFixed(2) + '%' },
         )
 
     return embed;
